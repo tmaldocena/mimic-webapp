@@ -1,0 +1,579 @@
+:root {
+
+    --polygon-size: 6.5vw;
+    --polygon-width: calc(var(--polygon-size));
+    --polygon-height: calc(var(--polygon-size));
+
+    --polygon-horizontal: calc(1.5 * var(--polygon-width));
+    --polygon-vertical: calc(var(--polygon-height) / 2 - 1vw);
+
+    --polygon-offset: calc(var(--polygon-horizontal) / 2);
+
+    --polygon-top-start: calc(15vh);
+    --polygon-left-start: calc(50vw - 1.75 * var(--polygon-horizontal));
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --polygon-size: 15vw;
+        --polygon-width: calc(var(--polygon-size));
+        --polygon-height: calc(var(--polygon-size));
+
+        --polygon-horizontal: calc(1.5 * var(--polygon-width));
+        --polygon-vertical: calc(var(--polygon-height) / 2 - 2.2vw);
+
+        --polygon-offset: calc(var(--polygon-horizontal) / 2);
+
+        --polygon-top-start: calc(25vh);
+        --polygon-left-start: calc(50vw - 1.75 * var(--polygon-horizontal));
+    }
+}
+
+
+
+body {
+    background-color: #172036;
+    font-family: "Lexend", sans-serif;
+    color: #bbb5ac;
+    min-height: 130vh;
+}
+
+#board{
+    position: relative;
+}
+
+table.panel {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-bottom: 15px;
+}
+
+#calculate-button {
+    width: 75px;
+    padding-right: 0.5rem;
+}
+
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+}
+
+#calculate{
+    cursor: pointer;
+    padding: 12px;
+    color: lightblue;
+    background-color: transparent;
+    border-color: lightblue;
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+#reset{
+    cursor: pointer;
+    padding: 12px;
+    color: lightblue;
+    background-color: transparent;
+    border-color: lightblue;
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+
+#progress-bar {
+    position: relative;
+    border: 1px solid #827d64c4;
+    border-radius: 5px;
+    text-align: center;
+    font-style: italic;
+    color: #bbb5ac;
+}
+
+    #progress-bar::before {
+        content: "";
+        background-color: lightblue;
+        width: var(--progress);
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0%;
+        height: 100%;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+    }
+
+    #progress-bar > progress {
+        width: 100%;
+        color: black;
+    }
+
+.hexagon {
+    position: absolute;
+    width: var(--polygon-size);
+    height: var(--polygon-size);
+    background-image: url('/images/mimicField1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.polygon-text {
+    position: absolute;
+    font-size: clamp(5px, 1vw, 24px);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    cursor: default;
+}
+
+.tile {
+    position: absolute;
+}
+
+/* Row 1 */
+#_0 {
+    top: var(--polygon-top-start);
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 1;
+}
+
+#_2 {
+    top: var(--polygon-top-start);
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 1;
+}
+
+#_4 {
+    top: var(--polygon-top-start);
+    left: calc(var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 1;
+}
+
+#_6 {
+    top: var(--polygon-top-start);
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 1;
+}
+
+#_1 {
+    top: calc(var(--polygon-top-start) + 1 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 2;
+}
+
+#_3 {
+    top: calc(var(--polygon-top-start) + 1 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 2;
+}
+
+#_5 {
+    top: calc(var(--polygon-top-start) + 1 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 2;
+}
+
+/* Row 3 */
+#_7 {
+    top: calc(var(--polygon-top-start) + 2 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 3;
+}
+
+#_9 {
+    top: calc(var(--polygon-top-start) + 2 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 3;
+}
+
+#_11 {
+    top: calc(var(--polygon-top-start) + 2 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 3;
+}
+
+#_13 {
+    top: calc(var(--polygon-top-start) + 2 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 3;
+}
+
+/* Row 4 */
+#_8 {
+    top: calc(var(--polygon-top-start) + 3 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 4;
+}
+
+#_10 {
+    top: calc(var(--polygon-top-start) + 3 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 4;
+}
+
+#_12 {
+    top: calc(var(--polygon-top-start) + 3 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 4;
+}
+
+/* Row 5 */
+#_14 {
+    top: calc(var(--polygon-top-start) + 4 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 5;
+}
+
+#_16 {
+    top: calc(var(--polygon-top-start) + 4 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 5;
+}
+
+#_18 {
+    top: calc(var(--polygon-top-start) + 4 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 5;
+}
+
+#_20 {
+    top: calc(var(--polygon-top-start) + 4 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 5;
+}
+
+/* Row 6 */
+#_15 {
+    top: calc(var(--polygon-top-start) + 5 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 6;
+}
+
+#_17 {
+    top: calc(var(--polygon-top-start) + 5 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 6;
+}
+
+#_19 {
+    top: calc(var(--polygon-top-start) + 5 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 6;
+}
+
+/* Row 7 */
+#_21 {
+    top: calc(var(--polygon-top-start) + 6 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 7;
+}
+
+#_23 {
+    top: calc(var(--polygon-top-start) + 6 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 7;
+}
+
+#_25 {
+    top: calc(var(--polygon-top-start) + 6 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 7;
+}
+
+#_27 {
+    top: calc(var(--polygon-top-start) + 6 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 7;
+}
+
+/* Row 8 */
+#_22 {
+    top: calc(var(--polygon-top-start) + 7 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 8;
+}
+
+#_24 {
+    background-image: url('/images/mimicField2.png');
+    top: calc(var(--polygon-top-start) + 7 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 8;
+}
+
+#_26 {
+    top: calc(var(--polygon-top-start) + 7 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 8;
+}
+
+/* Row 9 */
+#_28 {
+    top: calc(var(--polygon-top-start) + 8 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 9;
+}
+
+#_30 {
+    top: calc(var(--polygon-top-start) + 8 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 9;
+}
+
+#_32 {
+    top: calc(var(--polygon-top-start) + 8 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 9;
+}
+
+#_34 {
+    top: calc(var(--polygon-top-start) + 8 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 9;
+}
+
+/* Row 10 */
+#_29 {
+    top: calc(var(--polygon-top-start) + 9 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 10;
+}
+
+#_31 {
+    top: calc(var(--polygon-top-start) + 9 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 10;
+}
+
+#_33 {
+    top: calc(var(--polygon-top-start) + 9 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 10;
+}
+
+/* Row 11 */
+#_35 {
+    top: calc(var(--polygon-top-start) + 10 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 11;
+}
+
+#_37 {
+    top: calc(var(--polygon-top-start) + 10 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 11;
+}
+
+#_39 {
+    top: calc(var(--polygon-top-start) + 10 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 11;
+}
+
+#_41 {
+    top: calc(var(--polygon-top-start) + 10 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 11;
+}
+
+/* Row 12 */
+#_36 {
+    top: calc(var(--polygon-top-start) + 11 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 12;
+}
+
+#_38 {
+    top: calc(var(--polygon-top-start) + 11 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 12;
+}
+
+#_40 {
+    top: calc(var(--polygon-top-start) + 11 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 12;
+}
+
+/* Row 13 */
+#_42 {
+    top: calc(var(--polygon-top-start) + 12 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 13;
+}
+
+#_44 {
+    top: calc(var(--polygon-top-start) + 12 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 13;
+}
+
+#_46 {
+    top: calc(var(--polygon-top-start) + 12 * var(--polygon-vertical));
+    left: calc( var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 13;
+}
+
+#_48 {
+    top: calc(var(--polygon-top-start) + 12 * var(--polygon-vertical));
+    left: calc(var(--polygon-left-start) + 3 * var(--polygon-horizontal));
+    z-index: 13;
+}
+
+/* Row 14 */
+#_43 {
+    top: calc(var(--polygon-top-start) + 13 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 0 * var(--polygon-horizontal));
+    z-index: 14;
+}
+
+#_45 {
+    top: calc(var(--polygon-top-start) + 13 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
+    z-index: 14;
+}
+
+#_47 {
+    top: calc(var(--polygon-top-start) + 13 * var(--polygon-vertical));
+    left: calc(var(--polygon-offset) + var(--polygon-left-start) + 2 * var(--polygon-horizontal));
+    z-index: 14;
+}
+
+.hexagon.void {
+    background-image: url('/images/mimicField4.png');
+}
+
+.hexagon.mimic {
+    background-image: url('/images/mimic.png');
+}
+
+.hexagon.bomb1 {
+    background-image: url('/images/mimicBombing1.png');
+}
+
+.hexagon.bomb2 {
+    background-image: url('/images/mimicBombing2.png');
+}
+
+.hexagon.bomb3 {
+    background-image: url('/images/mimicBombing3.png');
+}
+
+.hexagon.bomb4 {
+    background-image: url('/images/mimicBombing4.png');
+}
+
+.hexagon.bomb5 {
+    background-image: url('/images/mimicBombing5.png');
+}
+
+.hexagon.bomb6 {
+    background-image: url('/images/mimicBombing6.png');
+}
+
+.hexagon.bomb7 {
+    background-image: url('/images/mimicBombing7.png');
+}
+
+.hexagon.bomb8 {
+    background-image: url('/images/mimicBombing8.png');
+}
+
+.hexagon.bomb9 {
+    background-image: url('/images/mimicBombing9.png');
+}
+
+.hexagon.bomb10 {
+    background-image: url('/images/mimicBombing10.png');
+}
+
+
+
+
+.hexagon.mimic0 {
+    background-image: url('/images/mimicMove.png');
+}
+
+.hexagon.mimic1 {
+    background-image: url('/images/mimicMove1.png');
+}
+
+.hexagon.mimic2 {
+    background-image: url('/images/mimicMove2.png');
+}
+
+.hexagon.mimic3 {
+    background-image: url('/images/mimicMove3.png');
+}
+
+.hexagon.mimic4 {
+    background-image: url('/images/mimicMove4.png');
+}
+
+.hexagon.mimic5 {
+    background-image: url('/images/mimicMove5.png');
+}
+
+.hexagon.mimic6 {
+    background-image: url('/images/mimicMove6.png');
+}
+
+.hexagon.mimic7 {
+    background-image: url('/images/mimicMove7.png');
+}
+
+.hexagon.mimic8 {
+    background-image: url('/images/mimicMove8.png');
+}
+
+.hexagon.mimic10 {
+    background-image: url('/images/mimicMove10.png');
+}
+
+.hexagon.mimic9 {
+    background-image: url('/images/mimicMove9.png');
+}
+
+.developers {
+    text-align: center;
+    font-size: 2em;
+    color: lightblue;
+    margin: 0 auto;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 1200px) {
+    .developers {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 900px) {
+    .developers {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 550px) {
+    .developers {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 440px) {
+    .developers {
+        margin-bottom: 30px;
+    }
+}

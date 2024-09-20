@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimic Capture Planner</title>
+    <link rel="stylesheet" href="mimic.css">
+    <script src="mimic.js" defer=""></script>
+</head>
+
+<table class="panel">
+    <tbody><tr>
+        <td id="void-turns"><strong>Void Tiles Remaining: </strong><span class="slot">14</span></td>
+        <td id="override"><label for="thirteen_tile_override"><strong>13-Tile Override:</strong></label><input type="checkbox" name="thirteen_tile_override" id="thirteen_tile_override"></td>
+        <td id="reset-button"><button id="reset">Reset</button></td>
+    </tr>
+</tbody></table>
+<table class="panel">
+    <tbody><tr>
+        <td id="calculate-button">
+            <button id="calculate">Calculate!</button>
+        </td>
+        <td id="progress-bar" style="--progress: 0%;">
+            Setup first and press "Calculate!" to begin.
+            <!--<progress value="0" max="100"></progress>-->
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+<div id="board" class="container">
+    <div id="_0" class="tile row-1 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">0</div>
+        </div>
+    </div>
+    <div id="_1" class="tile row-1 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">1</div>
+        </div>
+    </div>
+    <div id="_2" class="tile row-1 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">2</div>
+        </div>
+    </div>
+    <div id="_3" class="tile row-1 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">3</div>
+        </div>
+    </div>
+    <div id="_4" class="tile row-1 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">4</div>
+        </div>
+    </div>
+    <div id="_5" class="tile row-1 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">5</div>
+        </div>
+    </div>
+    <div id="_6" class="tile row-1 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">6</div>
+        </div>
+    </div>
+    <div id="_7" class="tile row-2 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">7</div>
+        </div>
+    </div>
+    <div id="_8" class="tile row-2 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">8</div>
+        </div>
+    </div>
+    <div id="_9" class="tile row-2 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">9</div>
+        </div>
+    </div>
+    <div id="_10" class="tile row-2 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">10</div>
+        </div>
+    </div>
+    <div id="_11" class="tile row-2 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">11</div>
+        </div>
+    </div>
+    <div id="_12" class="tile row-2 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">12</div>
+        </div>
+    </div>
+    <div id="_13" class="tile row-2 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">13</div>
+        </div>
+    </div>
+    <div id="_14" class="tile row-3 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">14</div>
+        </div>
+    </div>
+    <div id="_15" class="tile row-3 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">15</div>
+        </div>
+    </div>
+    <div id="_16" class="tile row-3 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">16</div>
+        </div>
+    </div>
+    <div id="_17" class="tile row-3 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">17</div>
+        </div>
+    </div>
+    <div id="_18" class="tile row-3 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">18</div>
+        </div>
+    </div>
+    <div id="_19" class="tile row-3 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">19</div>
+        </div>
+    </div>
+    <div id="_20" class="tile row-3 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">20</div>
+        </div>
+    </div>
+    <div id="_21" class="tile row-4 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">21</div>
+        </div>
+    </div>
+    <div id="_22" class="tile row-4 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">22</div>
+        </div>
+    </div>
+    <div id="_23" class="tile row-4 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">23</div>
+        </div>
+    </div>
+    <div id="_24" class="tile row-4 col-4">
+        <div class="hexagon mimic0">
+            <div class="polygon-text"></div>
+        </div>
+    </div>
+    <div id="_25" class="tile row-4 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">25</div>
+        </div>
+    </div>
+    <div id="_26" class="tile row-4 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">26</div>
+        </div>
+    </div>
+    <div id="_27" class="tile row-4 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">27</div>
+        </div>
+    </div>
+    <div id="_28" class="tile row-5 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">28</div>
+        </div>
+    </div>
+    <div id="_29" class="tile row-5 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">29</div>
+        </div>
+    </div>
+    <div id="_30" class="tile row-5 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">30</div>
+        </div>
+    </div>
+    <div id="_31" class="tile row-5 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">31</div>
+        </div>
+    </div>
+    <div id="_32" class="tile row-5 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">32</div>
+        </div>
+    </div>
+    <div id="_33" class="tile row-5 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">33</div>
+        </div>
+    </div>
+    <div id="_34" class="tile row-5 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">34</div>
+        </div>
+    </div>
+    <div id="_35" class="tile row-6 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">35</div>
+        </div>
+    </div>
+    <div id="_36" class="tile row-6 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">36</div>
+        </div>
+    </div>
+    <div id="_37" class="tile row-6 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">37</div>
+        </div>
+    </div>
+    <div id="_38" class="tile row-6 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">38</div>
+        </div>
+    </div>
+    <div id="_39" class="tile row-6 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">39</div>
+        </div>
+    </div>
+    <div id="_40" class="tile row-6 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">40</div>
+        </div>
+    </div>
+    <div id="_41" class="tile row-6 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">41</div>
+        </div>
+    </div>
+    <div id="_42" class="tile row-7 col-1">
+        <div class="hexagon">
+            <div class="polygon-text">42</div>
+        </div>
+    </div>
+    <div id="_43" class="tile row-7 col-2">
+        <div class="hexagon">
+            <div class="polygon-text">43</div>
+        </div>
+    </div>
+    <div id="_44" class="tile row-7 col-3">
+        <div class="hexagon">
+            <div class="polygon-text">44</div>
+        </div>
+    </div>
+    <div id="_45" class="tile row-7 col-4">
+        <div class="hexagon">
+            <div class="polygon-text">45</div>
+        </div>
+    </div>
+    <div id="_46" class="tile row-7 col-5">
+        <div class="hexagon">
+            <div class="polygon-text">46</div>
+        </div>
+    </div>
+    <div id="_47" class="tile row-7 col-6">
+        <div class="hexagon">
+            <div class="polygon-text">47</div>
+        </div>
+    </div>
+    <div id="_48" class="tile row-7 col-7">
+        <div class="hexagon">
+            <div class="polygon-text">48</div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="developers">This tool was made by the Cool Sparky 😎✌️</div>
+
+</html>
