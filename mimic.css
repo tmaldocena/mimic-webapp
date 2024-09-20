@@ -111,7 +111,7 @@ input[type=checkbox]{
     position: absolute;
     width: var(--polygon-size);
     height: var(--polygon-size);
-    background-image: url('../images/mimicField1.png');
+    background-image: url('./images/mimicField1.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -301,7 +301,7 @@ input[type=checkbox]{
 }
 
 #_24 {
-    background-image: url('../images/mimicField2.png');
+    background-image: url('./images/mimicField2.png');
     top: calc(var(--polygon-top-start) + 7 * var(--polygon-vertical));
     left: calc(var(--polygon-offset) + var(--polygon-left-start) + 1 * var(--polygon-horizontal));
     z-index: 8;
@@ -446,95 +446,95 @@ input[type=checkbox]{
 }
 
 .hexagon.void {
-    background-image: url('../images/mimicField4.png');
+    background-image: url('./images/mimicField4.png');
 }
 
 .hexagon.mimic {
-    background-image: url('../images/mimic.png');
+    background-image: url('./images/mimic.png');
 }
 
 .hexagon.bomb1 {
-    background-image: url('../images/mimicBombing1.png');
+    background-image: url('./images/mimicBombing1.png');
 }
 
 .hexagon.bomb2 {
-    background-image: url('../images/mimicBombing2.png');
+    background-image: url('./images/mimicBombing2.png');
 }
 
 .hexagon.bomb3 {
-    background-image: url('../images/mimicBombing3.png');
+    background-image: url('./images/mimicBombing3.png');
 }
 
 .hexagon.bomb4 {
-    background-image: url('../images/mimicBombing4.png');
+    background-image: url('./images/mimicBombing4.png');
 }
 
 .hexagon.bomb5 {
-    background-image: url('../images/mimicBombing5.png');
+    background-image: url('./images/mimicBombing5.png');
 }
 
 .hexagon.bomb6 {
-    background-image: url('../images/mimicBombing6.png');
+    background-image: url('./images/mimicBombing6.png');
 }
 
 .hexagon.bomb7 {
-    background-image: url('../images/mimicBombing7.png');
+    background-image: url('./images/mimicBombing7.png');
 }
 
 .hexagon.bomb8 {
-    background-image: url('../images/mimicBombing8.png');
+    background-image: url('./images/mimicBombing8.png');
 }
 
 .hexagon.bomb9 {
-    background-image: url('../images/mimicBombing9.png');
+    background-image: url('./images/mimicBombing9.png');
 }
 
 .hexagon.bomb10 {
-    background-image: url('../images/mimicBombing10.png');
+    background-image: url('./images/mimicBombing10.png');
 }
 
 .hexagon.mimic0 {
-    background-image: url('../images/mimicMove.png');
+    background-image: url('./images/mimicMove.png');
 }
 
 .hexagon.mimic1 {
-    background-image: url('../images/mimicMove1.png');
+    background-image: url('./images/mimicMove1.png');
 }
 
 .hexagon.mimic2 {
-    background-image: url('../images/mimicMove2.png');
+    background-image: url('./images/mimicMove2.png');
 }
 
 .hexagon.mimic3 {
-    background-image: url('../images/mimicMove3.png');
+    background-image: url('./images/mimicMove3.png');
 }
 
 .hexagon.mimic4 {
-    background-image: url('../images/mimicMove4.png');
+    background-image: url('./images/mimicMove4.png');
 }
 
 .hexagon.mimic5 {
-    background-image: url('../images/mimicMove5.png');
+    background-image: url('./images/mimicMove5.png');
 }
 
 .hexagon.mimic6 {
-    background-image: url('../images/mimicMove6.png');
+    background-image: url('./images/mimicMove6.png');
 }
 
 .hexagon.mimic7 {
-    background-image: url('../images/mimicMove7.png');
+    background-image: url('./images/mimicMove7.png');
 }
 
 .hexagon.mimic8 {
-    background-image: url('../images/mimicMove8.png');
+    background-image: url('./images/mimicMove8.png');
 }
 
 .hexagon.mimic10 {
-    background-image: url('../images/mimicMove10.png');
+    background-image: url('./images/mimicMove10.png');
 }
 
 .hexagon.mimic9 {
-    background-image: url('../images/mimicMove9.png');
+    background-image: url('./images/mimicMove9.png');
 }
 
 .developers {
